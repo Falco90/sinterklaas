@@ -13,14 +13,15 @@
   </head>
   <body>
     <h1>Verlanglijstje</h1>
+    <div id="items">
     <ul class="list-group">
-        <li class="list-group-item ourItem" data-toggle="modal" data-target="#exampleModal">Cras justo odio</li>
-        <li class="list-group-item ourItem" data-toggle="modal" data-target="#exampleModal">Dapibus ac facilisis in</li>
-        <li class="list-group-item ourItem" data-toggle="modal" data-target="#exampleModal">Morbi leo risus</li>
-        <li class="list-group-item ourItem" data-toggle="modal" data-target="#exampleModal">Porta ac consectetur ac</li>
-        <li class="list-group-item ourItem" data-toggle="modal" data-target="#exampleModal">Vestibulum at eros</li>
+    @foreach ($items as $item)
+    <li class="list-group-item ourItem" data-toggle="modal" data-target="#exampleModal">{{ $item->item }}
+    <input type="hidden" id="itemId" value="{{ $item->id }}">
+    </li>
+    @endforeach
       </ul>
-
+    </div>
       
 
       <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
@@ -33,12 +34,13 @@
               </button>
             </div>
             <div class="modal-body">
+              <input type="hidden" id="id">
               <p><input type="text" placeholder="Write new item here" id="addItem" class="form-control"></p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" id="delete" data-dismiss="modal" style="display:none">Delete</button>
               <button type="button" class="btn btn-primary" id="saveChanges" style="display:none">Save changes</button>
-              <button type="button" class="btn btn-primary" id="addButton">Add new item</button>
+              <button type="button" class="btn btn-primary" id="addButton" data-dismiss="modal">Add new item</button>
             </div>
           </div>
         </div>
@@ -54,19 +56,18 @@
 
     <script>
     $(document).ready(function() {
-        $('.ourItem').each(function() {
-            $(this).click(function(event) {
+      $(document).on('click', '.ourItem', function(event) {
                 var text = $(this).text();
+                var id = $(this).find('#itemId').val();
                 $('#title').text('Edit item');
                 $('#delete').show('400');
                 $('#saveChanges').show('400');
                 $('#addButton').hide();
                 $('#addItem').val(text);
+                $('#id').val(id);
                 console.log(text);
-            });
         });
-
-            $('#addNew').click(function(event) {
+            $(document).on('click', '#addNew', function(event) {
                 $('#title').text('Add new item');
                 $('#delete').hide('400');
                 $('#saveChanges').hide('400');
@@ -79,7 +80,17 @@
                 console.log(text);
                 $.post('list', {'text': text, '_token':$('input[name=_token]').val()}, function(data) {
                   console.log(data);
-                }).fail(function(e){console.log(e)});
+                  $('#items').load(location.href + ' #items');
+                }).fail(function(e){console.log(e)
+                });
+            });
+
+            $('#delete').click(function(event) {
+                var id = $('#id').val();
+                $.post('delete', {'id': id, '_token':$('input[name=_token]').val()}, function(data) {
+                  $('#items').load(location.href + ' #items');
+                  console.log(data);
+                });
             });
        
     });

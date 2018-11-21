@@ -8,8 +8,8 @@ use App\Item;
 class ListController extends Controller
 {
     public function index() {
-
-        return view('list');
+        $items = Item::all();
+        return view('list', compact('items'));
     }
 
     public function store(request $request) {
@@ -17,6 +17,12 @@ class ListController extends Controller
         $item->item = $request->text;
         $item->save();
         return 'done';
+    }
+
+    public function delete(request $request) {
+
+        Item::where('id', $request->id)->delete();
+        return $request->all();
     }
 
 }
