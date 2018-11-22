@@ -134,3 +134,14 @@ a:hover {
       width: 200px;
       align-self: center;
   }
+
+  .buttons {
+      display: flex;
+      flex-direction: row;
+      margin: 0 auto;
+  }
+
+  #toRegister, #toLogin {
+      margin-left: 10px;
+      margin-right: 10px;
+  }

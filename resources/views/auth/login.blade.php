@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layoutsplash')
 
 @section('content')
 <div class="container">
