@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -9,14 +8,15 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href={{ asset('css/main.css') }}>
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Merriweather|Oswald|Pacifico|Roboto|Patrick+Hand" rel="stylesheet"> 
+
 
     <title>Verlanglijstje</title>
   </head>
-<body>
-<div class="gradient-overlay"></div>
-@include('includes.navbar')
-        <div class="container">
-        @yield('content')
-        </div>
+  <body>
+    <div class="background"></div>
+    @include('includes.navbar')
+    @yield('content')
 </body>
-</html>
+</html

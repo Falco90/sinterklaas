@@ -1,23 +1,15 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+        <div class="wrapper">
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
                 </div>
-            </div>
+            @endif
+            <h3>Welkom {{ Auth::user()->name }},</h3>
+            <p>De decembermaand is weer (bijna) aangebroken. Dat betekent dat Sinterklaas en de kerstman weer bijna voor de deur staan! Mét cadeautjes uiteraard. Om de Sint en de kerstman te laten weten wat je graag zou willen hebben kun je op deze website een verlanglijstje maken. Wij wensen je een geweldige decembermaand toe!</p><br><br>
+            <h4>Sint en de kerstman</h4>
+            <a href='/list' class="menu" id="toList"><button type="button">Verlanglijstje maken</button></a>
         </div>
-    </div>
-</div>
 @endsection
