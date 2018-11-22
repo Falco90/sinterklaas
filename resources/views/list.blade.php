@@ -8,11 +8,17 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href={{ asset('css/main.css') }}>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Oswald|Pacifico|Patrick+Hand" rel="stylesheet">
+
 
     <title>Verlanglijstje</title>
   </head>
   <body>
-    <h1>{{ Auth::user()->name }}'s verlanglijstje</h1>
+    @include('includes.navbar')
+    <div class="wrapper">
+    <h2>{{ Auth::user()->name }}'s verlanglijstje</h2>
+  
     <div id="items">
     <ul class="list-group">
     @foreach ($items as $item)
@@ -21,8 +27,9 @@
     </li>
     @endforeach
       </ul>
+
     </div>
-      
+    <button type="button" class="btn btn-success" id="addNew" data-toggle="modal" data-target="#exampleModal">Voeg nieuwe wens toe</button>  
 
       <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
         <div class="modal-dialog" role="document">
@@ -45,8 +52,8 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <button type="button" class="btn btn-success" id="addNew" data-toggle="modal" data-target="#exampleModal">Voeg nieuwe wens toe</button>
 {{ csrf_field() }}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -59,7 +66,7 @@
       $(document).on('click', '.ourItem', function(event) {
                 var text = $(this).text();
                 var id = $(this).find('#itemId').val();
-                $('#title').text('Edit item');
+                $('#title').text('Wens aanpassen');
                 $('#delete').show('400');
                 $('#saveChanges').show('400');
                 $('#addButton').hide();
