@@ -12,7 +12,7 @@
     <title>Verlanglijstje</title>
   </head>
   <body>
-    <h1>Verlanglijstje</h1>
+    <h1>{{ Auth::user()->name }}'s verlanglijstje</h1>
     <div id="items">
     <ul class="list-group">
     @foreach ($items as $item)
@@ -28,25 +28,25 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="title">New item</h5>
+              <h5 class="modal-title" id="title">Nieuwe wens</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
               <input type="hidden" id="id">
-              <p><input type="text" placeholder="Write new item here" id="addItem" class="form-control"></p>
+              <p><input type="text" placeholder="Schrijf hier een nieuwe wens" id="addItem" class="form-control"></p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" id="delete" data-dismiss="modal" style="display:none">Delete</button>
-              <button type="button" class="btn btn-primary" id="saveChanges" data-dismiss="modal" style="display:none">Save changes</button>
-              <button type="button" class="btn btn-primary" id="addButton" data-dismiss="modal">Add new item</button>
+              <button type="button" class="btn btn-secondary" id="delete" data-dismiss="modal" style="display:none">Verwijderen</button>
+              <button type="button" class="btn btn-primary" id="saveChanges" data-dismiss="modal" style="display:none">Opslaan</button>
+              <button type="button" class="btn btn-primary" id="addButton" data-dismiss="modal">Voeg nieuwe wens toe</button>
             </div>
           </div>
         </div>
       </div>
 
-      <button type="button" class="btn btn-success" id="addNew" data-toggle="modal" data-target="#exampleModal">Add new item</button>
+      <button type="button" class="btn btn-success" id="addNew" data-toggle="modal" data-target="#exampleModal">Voeg nieuwe wens toe</button>
 {{ csrf_field() }}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -69,7 +69,7 @@
                 console.log(text);
         });
             $(document).on('click', '#addNew', function(event) {
-                $('#title').text('Add new item');
+                $('#title').text('Voeg nieuwe wens toe');
                 $('#delete').hide('400');
                 $('#saveChanges').hide('400');
                 $('#addButton').show('400');
@@ -79,7 +79,7 @@
             $('#addButton').click(function(event) {
                 var text = $('#addItem').val();
                 if (text == "") {
-                  alert('Type alsjeblieft iets in');
+                  alert('Je hebt niets ingevuld');
                 } else {
                 $.post('list', {'text': text, '_token':$('input[name=_token]').val()}, function(data) {
                   console.log(data);

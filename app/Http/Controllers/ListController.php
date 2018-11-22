@@ -15,6 +15,7 @@ class ListController extends Controller
     public function store(request $request) {
         $item = new Item;
         $item->item = $request->text;
+        $item->owner_id = auth()->id();
         $item->save();
         return 'done';
     }
