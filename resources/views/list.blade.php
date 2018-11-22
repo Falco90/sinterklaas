@@ -39,7 +39,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" id="delete" data-dismiss="modal" style="display:none">Delete</button>
-              <button type="button" class="btn btn-primary" id="saveChanges" style="display:none">Save changes</button>
+              <button type="button" class="btn btn-primary" id="saveChanges" data-dismiss="modal" style="display:none">Save changes</button>
               <button type="button" class="btn btn-primary" id="addButton" data-dismiss="modal">Add new item</button>
             </div>
           </div>
@@ -63,6 +63,7 @@
                 $('#delete').show('400');
                 $('#saveChanges').show('400');
                 $('#addButton').hide();
+                var text = $.trim(text);
                 $('#addItem').val(text);
                 $('#id').val(id);
                 console.log(text);
@@ -77,12 +78,15 @@
 
             $('#addButton').click(function(event) {
                 var text = $('#addItem').val();
-                console.log(text);
+                if (text == "") {
+                  alert('Type alsjeblieft iets in');
+                } else {
                 $.post('list', {'text': text, '_token':$('input[name=_token]').val()}, function(data) {
                   console.log(data);
                   $('#items').load(location.href + ' #items');
                 }).fail(function(e){console.log(e)
                 });
+                }
             });
 
             $('#delete').click(function(event) {
@@ -92,7 +96,15 @@
                   console.log(data);
                 });
             });
-       
+
+            $('#saveChanges').click(function(event) {
+                var id = $('#id').val();
+                var value = $('#addItem').val();
+                $.post('update', {'id': id, 'value': value, '_token':$('input[name=_token]').val()}, function(data) {
+                  $('#items').load(location.href + ' #items');
+                  console.log(data);
+                });
+            });  
     });
     </script>
   </body>
