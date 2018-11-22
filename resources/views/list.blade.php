@@ -15,6 +15,7 @@
     <title>Verlanglijstje</title>
   </head>
   <body>
+    <div class="background"></div>
     @include('includes.navbar')
     <div class="wrapper">
     <h2>{{ Auth::user()->name }}'s verlanglijstje</h2>
@@ -53,7 +54,6 @@
         </div>
       </div>
     </div>
-
 {{ csrf_field() }}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
