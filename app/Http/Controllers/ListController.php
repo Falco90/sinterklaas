@@ -8,7 +8,7 @@ use App\Item;
 class ListController extends Controller
 {
     public function index() {
-        $items = Item::all();
+        $items = Item::where('owner_id', auth()->id())->get();
         return view('list', compact('items'));
     }
 

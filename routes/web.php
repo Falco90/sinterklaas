@@ -19,3 +19,6 @@ Route::get('list', 'ListController@index');
 Route::post('list', 'ListController@store');
 Route::post('delete', 'ListController@delete');
 Route::post('update', 'ListController@update');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
