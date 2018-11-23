@@ -5,7 +5,7 @@
   <div id="items">
     <ul class="list-group">
       @foreach ($wishlists as $wishlist)
-        <li class="list-group-item ourItem" data-toggle="modal" data-target="#exampleModal">{{ $wishlist->title }}
+      <li class="list-group-item ourItem" onclick="location.href='/wishlists/{{ $wishlist->id }}/edit'" id="toList"><!--<button type="button" class="btn btn-primary" class="show" data-dismiss="modal">Aanpassen</button>-->{{ $wishlist->title }}
           <input type="hidden" id="wishlistId" value="{{ $wishlist->id }}">
         </li>
       @endforeach
@@ -26,9 +26,10 @@
               <p><input type="text" placeholder="Naam verlanglijstje" id="addItem" class="form-control"></p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" id="delete" data-dismiss="modal" style="display:none">Verwijderen</button>
-              <button type="button" class="btn btn-primary" id="saveChanges" data-dismiss="modal" style="display:none">Opslaan</button>
-              <button type="button" class="btn btn-primary" id="addButton" data-dismiss="modal">Voeg nieuw verlanglijstje toe</button>
+                 
+                <button type="button" class="btn btn-secondary" id="delete" data-dismiss="modal" style="display:none">Verwijderen</button>
+                <button type="button" class="btn btn-primary" id="saveChanges" data-dismiss="modal" style="display:none">Opslaan</button>
+                <button type="button" class="btn btn-primary" id="addButton" data-dismiss="modal">Voeg nieuw verlanglijstje toe</button>
             </div>
           </div>
         </div>

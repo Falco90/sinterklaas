@@ -34,6 +34,7 @@ $(document).ready(function() {
 
           $('#delete').click(function(event) {
               var id = $('#id').val();
+              console.log(id);
               $.post('delete', {'id': id, '_token':$('input[name=_token]').val()}, function(data) {
                 $('#items').load(location.href + ' #items');
                 console.log(data);

@@ -27,8 +27,8 @@ Route::get('/wishlists/{wishlist}/edit', 'WishlistController@edit');
 
 Route::get('list', 'ListController@index');
 Route::post('/wishlists/{wishlist}/edit', 'ListController@store');
-Route::post('delete', 'ListController@delete');
-Route::post('update', 'ListController@update');
+Route::post('/wishlists/{wishlist}/delete', 'ListController@delete');
+Route::post('/wishlists/{wishlist}/update', 'ListController@update');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

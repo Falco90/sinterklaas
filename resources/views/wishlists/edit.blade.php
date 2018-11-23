@@ -12,8 +12,8 @@
       @endforeach
     </ul>
   </div>
-  <p>Gebruik onderstaande link om je verlanglijstje te delen:<br>
-    {{ $_SERVER['SERVER_NAME'] }}/wishlists/{{ $wishlist->id}}/edit</p>
+  <p>Gebruik de onderstaande link om je verlanglijstje te delen:<br>
+    {{ $_SERVER['SERVER_NAME'] }}/wishlists/{{ $wishlist->id}}/edit</p><br><br>
     <button type="button" class="btn btn-success" id="addNew" data-toggle="modal" data-target="#exampleModal">Voeg nieuwe wens toe</button>  
       <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
         <div class="modal-dialog" role="document">
