@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;
+use Session;
 
 class ListController extends Controller
 {
@@ -13,9 +14,11 @@ class ListController extends Controller
     }
 
     public function store(request $request) {
+
         $item = new Item;
         $item->item = $request->text;
         $item->owner_id = auth()->id();
+        $item->wishlist_id = Session::get('wishlist_id'); 
         $item->save();
         return 'done';
     }

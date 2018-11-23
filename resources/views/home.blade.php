@@ -11,6 +11,6 @@
             <p>Je bent nu ingelogd! Nu kun je beginnen met het maken van je verlanglijstje. Wij doen onze uiterste best om je wensen uit te laten komen. <br><br>
                 Wij wensen je een geweldige decembermaand toe!</p><br><br>
             <h4 id="signature">Sint en de kerstman</h4>
-            <a href='/list' class="menu" id="toList"><button type="button" class="btn btn-success">Verlanglijstje maken</button></a>
+            <a href='/wishlists' class="menu" id="toList"><button type="button" class="btn btn-success">Verlanglijstje maken</button></a>
         </div>
 @endsection
