@@ -16,10 +16,12 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('owner_id');
+            $table->unsignedInteger('wishlist_id');
             $table->string('item');
             $table->timestamps();
 
             $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('wishlist_id')->references('id')->on('wishlists')->onDelete('cascade');
         });
     }
 

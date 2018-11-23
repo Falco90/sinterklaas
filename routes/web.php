@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/about', function() {
+    return view('about');
+});
+
+Route::get('/wishlists', 'WishlistController@index');
+
 Route::get('list', 'ListController@index');
 Route::post('list', 'ListController@store');
 Route::post('delete', 'ListController@delete');

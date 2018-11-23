@@ -37,6 +37,10 @@ h3, h4 {
     font-family: 'Courgette';
 }
 
+#signature {
+    margin-bottom: 40px;
+}
+
 #listTitle {
     margin: 0 auto;
 }
